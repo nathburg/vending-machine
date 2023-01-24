@@ -1,0 +1,25 @@
+{
+	"USD": {
+		"abbreviation": "USD",
+		"format": "$%amount%",
+		"unitConversionFactor": 100,
+		"coins": [
+			{ "name": "Quarters", "value": 25 },
+			{ "name": "Dimes", "value": 10 },
+			{ "name": "Nickels", "value": 5 },
+			{ "name": "Pennies", "value": 1 }
+		]
+	},
+	"Fake": {
+		"abbreviation": "FK",
+		"format": "¯\\_(ツ)_/¯%amount%",
+		"unitConversionFactor": 1000,
+		"coins": [
+			{ "name": "Funny Munnies", "value": 333 },
+			{ "name": "Junky Munkies", "value": 101 },
+			{ "name": "Phony Bonies", "value": 22 },
+			{ "name": "Silly Billies", "value": 8 },
+			{ "name": "Tiny Whinies", "value": 2 }
+		]
+	}
+}
