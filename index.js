@@ -38,25 +38,26 @@ if (isNaN(payment)) {
 	process.exit(1);
 }
 
-const change = payment - itemCost;
+const coinValues = {
+	Quarters: 25,
+	Dimes: 10,
+	Nickels: 5,
+	Pennies: 1,
+};
 
-if (change === 0) return console.log('No change required.');
+const coinOrder = ['Quarters', 'Dimes', 'Nickels', 'Pennies'];
 
-const quarters = Math.floor(change / 25);
-const quartersRemainder = (change / 25 - quarters) * 25;
-if (quarters) console.log(`Quarters: ${quarters}`);
-if (!quartersRemainder) return;
+const diff = payment - itemCost;
+let change = diff;
+let total = 0;
 
-const dimes = Math.floor(quartersRemainder / 10);
-const dimesRemainder = (quartersRemainder / 10 - dimes) * 10;
-if (dimes) console.log(`Dimes: ${dimes}`);
+for (let coin of coinOrder) {
+	const coinQuantity = Math.floor(change / coinValues[coin]);
+	total += coinQuantity * coinValues[coin];
+	const remainder = change % coinValues[coin];
+	if (coinQuantity) console.log(`${coin}: ${coinQuantity}`);
+	if (!remainder) break;
+	else change = remainder;
+}
 
-if (!dimesRemainder) return;
-
-const nickels = Math.floor(dimesRemainder / 5);
-const nickelsRemainder = (dimesRemainder / 5 - nickels) * 5;
-if (nickels) console.log(`Nickels: ${nickels}`);
-
-if (!nickelsRemainder) return;
-
-console.log(`Pennies: ${Math.floor(nickelsRemainder)}`);
+console.log(`Total Change: $${total / 100}`);
