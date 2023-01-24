@@ -22,8 +22,7 @@ for (let i = 0; i < process.argv.length; ++i) {
 }
 
 if (currencyInput == null) {
-	console.error('--currency must be provided');
-	process.exit(1);
+	currencyInput = 'USD';
 }
 
 if (!Object.keys(currencies).includes(currencyInput)) {
