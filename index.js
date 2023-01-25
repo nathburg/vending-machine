@@ -55,6 +55,7 @@ if (isNaN(payment)) {
 	process.exit(1);
 }
 
+const lengthOfLongestName = Math.max(...coins.map((coin) => coin.name.length));
 const diff = payment - itemCost;
 let change = diff;
 let total = 0;
@@ -63,8 +64,9 @@ for (let coin of coins) {
 	const coinQuantity = Math.floor(change / coin.value);
 	total += coinQuantity * coin.value;
 	const remainder = change % coin.value;
-	if (coinQuantity) console.log(`${coin.name}: ${coinQuantity}`);
 	change = remainder;
+	const printName = (coin.name + ': ').padEnd(lengthOfLongestName + 2);
+	if (coinQuantity) console.log(printName + `${coinQuantity}`);
 	if (!remainder) break;
 }
 
